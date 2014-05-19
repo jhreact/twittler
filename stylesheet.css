@@ -1,6 +1,20 @@
 body {
-    background-color: #232c31;
+    background-color: #222222;
     color: #ffffff;
     font-family: Verdana;
     font-size: 10pt;
+}
+
+.user {
+    color: #828282;
+    font-size: 10pt;
+}
+
+.message {
+    font-size: 12pt;
+}
+
+.date {
+    font-style: italic;
+    font-size: 8pt;
 }
