@@ -5,6 +5,7 @@
     <script src="jquery.js"></script>
     <script src="jquery.timeago.js"></script>
     <script src="data_generator.js"></script>
+    <script src="purl.js"></script>
   </head>
   <body>
     <script>
@@ -16,21 +17,21 @@
         // TODO: change this to only show new elements
         var showTweets = function() {
           $('div').remove();
+
+          var user = $.url().param('username');
           var index = streams.home.length - 1;
           while(index >= 0){
             var tweet = streams.home[index];
-            var $tweet = $('<div class="tweet"><span class="user"></span><span class="message"></span><span class="date"></span></div>');
-            // We should do 3 lines: username, message, time
-            // Maybe look into styling hashtags too
-            // Some sort of monokai-esque theme?
-            // Maybe take some cues from duckduckgo's dark theme
-            $tweet.find('.user').text('@' + tweet.user);
-            $tweet.find('.message').text(tweet.message);
-            $tweet.find('.date').text(jQuery.timeago(tweet.created_at));
-            $tweet.appendTo($body);
+            if (!user || tweet.user === user) {
+                var $tweet = $('<div class="tweet"><span class="user"></span><span class="message"></span><span class="date"></span></div>');
+                $tweet.find('.user').text('@' + tweet.user);
+                $tweet.find('.message').text(tweet.message);
+                $tweet.find('.date').text(jQuery.timeago(tweet.created_at));
+                $tweet.appendTo($body);
+            }
             index -= 1;
           }
-          // setTimeout(showTweets, 1500);
+          setTimeout(showTweets, 1500);
         };
         showTweets();
         // We'll want to add a class for the streams
