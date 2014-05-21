@@ -17,11 +17,11 @@ body {
     width: 100px;
     height: 20px;
     border-radius: 5px;
-    border-top: 2px;
     border: 2px solid #FF4794;
     display: inline-block;
-    padding: 2px;
-    margin: 2px;
+    padding: 1px;
+    float: left;
+    margin: 2px 5px 2px 2px;
     font-size: 7pt;
     font-weight: bold;
     color: #FF4794;
@@ -32,13 +32,16 @@ body {
 .message {
     font-size: 12pt;
     padding: 2px;
-    margin-left: 10px;
+    margin: 2px 2px 2px 5px;
     display: inline-block;
-    text-valign: center;
+    text-align: left;
 }
 
 .date {
     font-style: italic;
     font-size: 8pt;
     color: #1168cc;
+    float: right;
+    text-align: left;
+    margin: auto;
 }
