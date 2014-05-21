@@ -6,9 +6,6 @@ body {
 }
 
 .tweet {
-    /* padding-bottom: 10px; */
-    /* padding-left: 5px; */
-    /* padding-top: 10px; */
     border: 0.25px #4A4943 solid;
     margin: auto;
 }
@@ -27,6 +24,14 @@ body {
     color: #FF4794;
     line-height: 20px;
     text-align: center;
+}
+
+a {
+    color: #fff762;
+}
+
+a:hover {
+    color: #4bcfff;
 }
 
 .message {
