@@ -11,20 +11,24 @@
     <script>
 
       $(document).ready(function(){
+        var path = $.url().attr('path');
+        var user = $.url().param('username');
+
         var $body = $('body');
-        $body.html('');
+        $body.html('<div><a href="" class="alltweets">Show all tweets</a></div><p></p>');
+        $('.alltweets').attr('href', path);
 
         // TODO: change this to only show new elements
         var showTweets = function() {
-          $('div').remove();
+          $('.tweet').remove();
 
-          var user = $.url().param('username');
           var index = streams.home.length - 1;
           while(index >= 0){
             var tweet = streams.home[index];
             if (!user || tweet.user === user) {
-                var $tweet = $('<div class="tweet"><span class="user"></span><span class="message"></span><span class="date"></span></div>');
-                $tweet.find('.user').text('@' + tweet.user);
+                var $tweet = $('<div class="tweet"><span class="user"><a></a></span><span class="message"></span><span class="date"></span></div>');
+                $tweet.find('.user a').attr('href', path + '?username=' + tweet.user);
+                $tweet.find('.user a').text('@' + tweet.user);
                 $tweet.find('.message').text(tweet.message);
                 $tweet.find('.date').text(jQuery.timeago(tweet.created_at));
                 $tweet.appendTo($body);
@@ -34,12 +38,6 @@
           setTimeout(showTweets, 1500);
         };
         showTweets();
-        // We'll want to add a class for the streams
-        // if we don't have the class, we'll use the streams by default
-        // otherwise, use a different class for username
-        // make sure to use the event.stopPropagation and event.preventDefault
-        // or maybe a display show/hide...
-
       });
 
     </script>
